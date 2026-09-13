@@ -2,13 +2,10 @@
 
 <div align="center">
 
-# PCL TCS (Blue edition)
+# PCL TCS 
 
-[Download the community edition](https://github.com/PCL-Community/PCL-CE/releases/latest) |
 [Upstream repository](https://github.com/Meloong-Git/PCL)
 
-[Report an issue](https://github.com/PCL-Community/PCL-CE/issues/new/choose) |
-[Contributing guide](https://github.com/PCL-Community/PCL-CE/wiki/开发指南)
 
 </div>
 
@@ -37,22 +34,13 @@ Enjoy!
 
 **✅ Fully supported**: we provide as much support as possible, but you must make sure the launcher is up to date.
 
-**⚠️ Should run, community support at our discretion**: PCL CE should run on these platforms, but full functionality is not guaranteed. You may need to upgrade to a fully supported OS version for further community support.
+**⚠️ Should run, community support at our discretion**: PCL TCS should run on these platforms, but full functionality is not guaranteed. You may need to upgrade to a fully supported OS version for further community support.
 
-**❌ Not supported**: PCL CE has low usability on these platforms and may not even open. Please upgrade your OS to use PCL CE.
+**❌ Not supported**: PCL TCS has low usability on these platforms and may not even open. Please upgrade your OS to use PCL TCS.
 
-**⚠️ Cross-compilation development support only**: the PCL CE source code can be compiled on macOS and Linux, but cannot run there directly. As a developer you can work on these platforms and then move the build output to Windows for testing.
+**⚠️ Cross-compilation development support only**: the PCL TCS source code can be compiled on macOS and Linux, but cannot run there directly. As a developer you can work on these platforms and then move the build output to Windows for testing.
 
-**Note**:    
-The community only supports the latest version of the launcher.    
-Depending on the nature of some issues (e.g. an incomplete system) you may still have to upgrade your OS to keep getting support.    
-PCL CE always recommends the latest OS version for the best experience.    
-You may still try to use PCL CE on unsupported systems, but you may run into many extra issues.
 
-## 🔒 License
-
-- `Plain Craft Launcher 2/` is under a [custom licence](https://github.com/PCL-Community/PCL-CE/blob/dev/Plain%20Craft%20Launcher%202/LICENCE)
-- `All other directories` are under the [Apache License 2.0](https://github.com/PCL-Community/PCL-CE/blob/dev/LICENSE)
 
 ## ❤️ Contributors
 
