@@ -1,0 +1,25 @@
+<local:MyPageLeft x:Class="PCL.PageTcsLinkLeft"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:local="clr-namespace:PCL">
+    <StackPanel x:Name="PanItem" Orientation="Vertical" Width="140" Margin="0,12,0,0">
+        <TextBlock x:Name="LabCategory" Text="陶瓦联机" Margin="13,5,5,3" Opacity="0.6" FontSize="12" />
+        <local:MyListItem x:Name="ItemStart" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Tag="start" Height="36" VerticalAlignment="Top" Title="启动联机"
+                          LogoScale="0.9" SvgIcon="lucide/play" Click="Item_Click" />
+        <local:MyListItem x:Name="ItemStop" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Tag="stop" Height="36" VerticalAlignment="Top" Title="停止联机"
+                          LogoScale="0.9" SvgIcon="lucide/power" Click="Item_Click" />
+        <local:MyListItem x:Name="ItemReload" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Tag="reload" Height="36" VerticalAlignment="Top" Title="刷新陶瓦界面"
+                          LogoScale="0.9" SvgIcon="lucide/refresh-cw" Click="Item_Click" />
+        <local:MyListItem x:Name="ItemDir" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Tag="dir" Height="36" VerticalAlignment="Top" Title="打开组件目录"
+                          LogoScale="0.9" SvgIcon="lucide/external-link" Click="Item_Click" />
+        <local:MyListItem x:Name="ItemProject" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Tag="project" Height="36" VerticalAlignment="Top" Title="陶瓦项目主页"
+                          LogoScale="0.9" SvgIcon="lucide/globe" Click="Item_Click" />
+        <TextBlock x:Name="LabTip" Margin="13,8,8,0" Opacity="0.45" FontSize="11" TextWrapping="Wrap"
+                   Text="联机由陶瓦（Terracotta）提供：点「启动联机」后右侧会出现陶瓦界面，在里面创建 / 加入房间即可，不依赖官方联机服务。" />
+    </StackPanel>
+</local:MyPageLeft>
