@@ -1,0 +1,46 @@
+PCL2-TCS源码
+================================
+内容：1108 个文件，约 10.5 MB
+
+一、这是什么
+------------
+PCL2-TCS源码。以 PCL CE（PCL Community Edition）为上游二次开发：
+· 图标（icon-blue-tcs.ico/png）+ 左侧竖向导航
+· 内置「社区 / 皮肤站 / B站」三个浏览器入口
+· 新增「联机」页面：使用第三方开源软件陶瓦（Terracotta）实现，与 HMCL 同款方案，不依赖 PCL 官方联机服务
+· 首次启动即可用离线 / 第三方验证登录；微软正版登录已内置 Client ID
+· 文案为「基于陶瓦联机」口径（无配色相关说法）
+
+二、编译环境
+------------
+· .NET SDK 10（含 Windows Desktop 工作负载）
+· Windows 10/11 x64
+· WebView2 Runtime（运行期需要，编译不需要）
+
+三、编译 / 发布命令
+--------------------
+Debug（本地调试，产物在 Plain Craft Launcher 2\bin\Debug\net10.0-windows\）：
+  dotnet build "Plain Craft Launcher 2\Plain Craft Launcher 2.csproj" -c Debug
+
+发布（自包含单文件，约 83 MB，目标机器无需装运行时）：
+  dotnet publish "Plain Craft Launcher 2\Plain Craft Launcher 2.csproj" -c Release -r win-x64 `
+    --self-contained true -p:PublishSingleFile=true `
+    -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o out
+
+发布（小体积版，约 24 MB，目标机器需装 .NET 10 Desktop Runtime x64）：
+  dotnet publish "Plain Craft Launcher 2\Plain Craft Launcher 2.csproj" -c Release -r win-x64 `
+    --self-contained false -p:PublishSingleFile=true -o out-small
+
+四、改动要点（相对上游 PCL CE）
+--------------------------------
+· 启动类：Modules\ModTerracotta.cs（陶瓦联机：下载 / SHA-512 校验 / 解包 / --hmcl 状态文件 / stdout 解析端口）
+· 联机页面：Pages\PageTcs\PageTcsLinkLeft.xaml(.cs) + 复用 Pages\PageTcs\PageTcsBrowser.xaml(.cs)（内嵌 WebView2，无工具栏模式）
+· 导航：FormMain.xaml / FormMain.xaml.cs（新增「联机」项，Tag=23，PageType.Link=23）
+· 品牌与文案：PCL.Core\App\Localization\Languages\{zh-CN,zh-TW,en-US,en-GB}.xaml
+· 账号放开 + 内置微软 Client ID：PCL.Core\App\Secrets.cs、Modules\Minecraft\ProfileUi.cs 等
+· 设置-个性化：删掉了「功能隐藏」里遗留的两处「联机」选项
+
+五、备注
+--------
+· 本项目为作业 / 自用性质，保留上游 PCL CE 与 PCL 的署名与许可（LICENSE、README 等均为上游文件）。
+· 陶瓦联机组件在首次点「启动联机」时从国内镜像下载并做 SHA-512 校验，缓存在启动器目录的 PCL\Terracotta 下。
