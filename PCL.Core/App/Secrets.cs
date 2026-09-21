@@ -12,12 +12,12 @@ public static class Secrets
     ///     TCS 定制：按以下顺序取用（都不需要重新编译）：
     ///     1. 环境变量 <c>PCL_MS_CLIENT_ID</c>（Release 也读取）
     ///     2. 启动器 exe 同目录下的 <c>ms-client-id.txt</c>（只写一行 client id 即可）
-    ///     3. 内置默认值（TCS 发布版开箱即可使用正版登录）
+    ///     3. 以上都没有时返回空字符串（本项目源码不内置任何 Client ID）
     /// </summary>
     public static string MSOAuthClientId { get; } = _ResolveMsOAuthClientId();
 
-    /// <summary>TCS 发布版内置的微软登录 Client ID（可用上面两种方式覆盖）。</summary>
-    private const string BuiltInMsOAuthClientId = "c14b0370-8d75-42f8-b329-5b60d39e319f";
+    /// <summary>不再内置 Client ID：请用上面的环境变量或同目录 ms-client-id.txt 提供。</summary>
+    private const string BuiltInMsOAuthClientId = "";
 
     private static string _ResolveMsOAuthClientId()
     {
