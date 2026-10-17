@@ -1,0 +1,69 @@
+﻿<local:MyPageRight
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:PCL"
+    x:Class="PCL.PageMultiplayerTerracotta"
+    PanScroll="{Binding ElementName=PanBack}">
+    <local:MyScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="PanBack">
+        <StackPanel x:Name="PanMain" Margin="25,12,25,20">
+            <Grid Margin="0,4,0,10">
+                <StackPanel>
+                    <TextBlock Text="陶瓦联机" FontSize="22" FontWeight="SemiBold" />
+                    <TextBlock TextWrapping="Wrap" Opacity="0.65" FontSize="12" Margin="0,4,0,0"
+                               Text="独立开源联机项目（GitHub burningtnt/Terracotta，基于 EasyTier，AGPL-3.0）：下载官方工具并校验，创建/加入房间在官方界面里完成，连接效果取决于双方网络。" />
+                </StackPanel>
+                <local:MyButton x:Name="BtnBack" HorizontalAlignment="Right" VerticalAlignment="Top" Height="28"
+                                MinWidth="92" Text="← 更换方式" Click="BtnBack_Click" />
+            </Grid>
+
+            <Border CornerRadius="8" Background="{DynamicResource ColorBrushTransparentBackground}" BorderBrush="#22000000" BorderThickness="1" Padding="16,12" Margin="0,0,0,10">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Text="陶瓦工具" FontSize="13.5" FontWeight="SemiBold" />
+                        <TextBlock x:Name="LabVersion" Margin="12,0,0,0" Opacity="0.6" FontSize="12" VerticalAlignment="Center" />
+                        <TextBlock x:Name="LabToolState" Margin="12,0,0,0" Opacity="0.75" FontSize="12" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <local:MyButton x:Name="BtnInstall" HorizontalAlignment="Right" Height="30" MinWidth="108"
+                                    Text="下载陶瓦工具" ColorType="Highlight" Click="BtnInstall_Click" />
+                </Grid>
+            </Border>
+
+            <Border CornerRadius="8" Background="{DynamicResource ColorBrushTransparentBackground}" BorderBrush="#22000000" BorderThickness="1" Padding="16,12" Margin="0,0,0,8">
+                <StackPanel>
+                    <Grid>
+                        <TextBlock Text="当前连接" FontSize="13.5" FontWeight="SemiBold" VerticalAlignment="Center" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <Ellipse x:Name="DotState" Width="7" Height="7" Fill="#c9ced6" VerticalAlignment="Center" Margin="0,0,6,0" />
+                            <TextBlock x:Name="LabConnState" FontSize="12" Opacity="0.75" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Grid>
+                    <local:MyListItem x:Name="ItemDetail" IsScaleAnimationEnabled="False" Type="Clickable" Height="30"
+                                      Margin="0,8,0,0" Title="详细状态" LogoScale="0.85" SvgIcon="lucide/chevron-right"
+                                      Click="ItemDetail_Click" />
+                    <TextBlock x:Name="LabDetail" Visibility="Collapsed" TextWrapping="Wrap" FontSize="11.5"
+                               Opacity="0.6" Margin="4,4,0,0" />
+                </StackPanel>
+            </Border>
+
+            <Border CornerRadius="8" Background="{DynamicResource ColorBrushTransparentBackground}" BorderBrush="#22000000" BorderThickness="1" Padding="18,16" Margin="0,4,0,10">
+                <StackPanel>
+                    <TextBlock x:Name="LabTip" Opacity="0.6" FontSize="12" TextWrapping="Wrap"
+                               Text="点下面的按钮启动陶瓦并打开它的官方界面：在界面里创建房间拿房间号，或填好友的房间号加入；房主在游戏里对局域网开放世界即可。" />
+                    <local:MyButton x:Name="BtnOpen" Height="34" MinWidth="160" Margin="0,12,0,0" HorizontalAlignment="Left"
+                                    Text="打开陶瓦界面" ColorType="Highlight" Click="BtnOpen_Click" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="关于陶瓦联机" FontSize="14" FontWeight="SemiBold" Margin="2,10,0,6" />
+            <TextBlock TextWrapping="Wrap" Opacity="0.6" FontSize="11.5" Margin="2,0,0,7"
+                       Text="陶瓦联机（Terracotta）是 burningtnt（GitHub burningtnt/Terracotta）维护的独立开源联机项目，基于 EasyTier、AGPL-3.0 协议。" />
+            <TextBlock TextWrapping="Wrap" Opacity="0.6" FontSize="11.5" Margin="2,0,0,7"
+                       Text="点击「下载陶瓦工具」获取官方 0.4.2 二进制，分别校验压缩包与 EXE 的 SHA-256；极端 NAT 环境下成功率较高。" />
+            <TextBlock TextWrapping="Wrap" Opacity="0.6" FontSize="11.5" Margin="2,0,0,10"
+                       Text="房间码为官方四段格式 U/XXXX-XXXX-XXXX-XXXX，与陶瓦官方工具互通。" />
+            <TextBlock x:Name="LabLogTitle" Text="陶瓦引擎日志（0 条）" FontSize="13" FontWeight="SemiBold" Margin="2,6,0,4" />
+            <TextBox x:Name="TextLog" Height="130" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
+                     FontFamily="Consolas" FontSize="11" TextWrapping="Wrap" />
+        </StackPanel>
+    </local:MyScrollViewer>
+</local:MyPageRight>
