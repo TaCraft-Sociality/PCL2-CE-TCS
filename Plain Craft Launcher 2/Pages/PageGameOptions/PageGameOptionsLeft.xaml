@@ -1,0 +1,47 @@
+<local:MyPageLeft x:Class="PCL.PageGameOptionsLeft"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:local="clr-namespace:PCL"
+                  AnimatedControl="{Binding ElementName=PanItem, Mode=OneWay}">
+    <StackPanel x:Name="PanItem" Orientation="Vertical" Width="152" Margin="0,12,0,0">
+        <TextBlock x:Name="LabCategory" Margin="13,5,5,3" Opacity="0.6" FontSize="12"
+                   Text="{DynamicResource GameOptions.Left.Section.Sync}" />
+        <!-- 用 Border 包住复选框：MyPageLeft 的逐个进入动画遍历器最后一条是 else Add(element)，
+             会一路递归进 MyCheckBox（根是 Grid）并把内部的 ShapeCheck.ShapeBorder 的 ScaleTransform
+             替换成 TranslateTransform，之后点复选框必然抛 InvalidCastException。Border 不是 Panel/ContentControl，
+             遍历器到此为止，不再深入。 -->
+        <Border Margin="0" Background="Transparent">
+            <StackPanel Orientation="Vertical">
+                <local:MyCheckBox x:Name="CheckSyncLaunch" Margin="13,6,8,2"
+                                  Text="{DynamicResource GameOptions.Left.SyncOnLaunch}"
+                                  Change="CheckSync_Change" />
+                <local:MyCheckBox x:Name="CheckSyncInstall" Margin="13,4,8,2"
+                                  Text="{DynamicResource GameOptions.Left.SyncOnInstall}"
+                                  Change="CheckSync_Change" />
+            </StackPanel>
+        </Border>
+        <TextBlock Margin="13,14,5,3" Opacity="0.6" FontSize="12"
+                   Text="{DynamicResource GameOptions.Left.Section.Action}" />
+        <local:MyListItem x:Name="ItemSyncCurrent" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Height="36" VerticalAlignment="Top" Title="{DynamicResource GameOptions.Left.Action.SyncCurrent}"
+                          LogoScale="0.9" SvgIcon="lucide/refresh-cw" Click="ItemSyncCurrent_Click" />
+        <local:MyListItem x:Name="ItemSyncAll" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Height="36" VerticalAlignment="Top" Title="{DynamicResource GameOptions.Left.Action.SyncAll}"
+                          LogoScale="0.9" SvgIcon="lucide/layers" Click="ItemSyncAll_Click" />
+        <local:MyListItem x:Name="ItemAddCustom" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Height="36" VerticalAlignment="Top" Title="{DynamicResource GameOptions.Left.Action.AddCustom}"
+                          LogoScale="0.9" SvgIcon="lucide/circle-plus" Click="ItemAddCustom_Click" />
+        <local:MyListItem x:Name="ItemReset" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Height="36" VerticalAlignment="Top" Title="{DynamicResource GameOptions.Left.Action.Reset}"
+                          LogoScale="0.9" SvgIcon="lucide/trash-2" Click="ItemReset_Click" />
+        <TextBlock x:Name="LabSectionShare" Margin="13,14,5,3" Opacity="0.6" FontSize="12" />
+        <local:MyListItem x:Name="ItemExportRules" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Height="36" VerticalAlignment="Top" LogoScale="0.9" SvgIcon="lucide/share-2"
+                          Click="ItemExportRules_Click" />
+        <local:MyListItem x:Name="ItemImportRules" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Height="36" VerticalAlignment="Top" LogoScale="0.9" SvgIcon="lucide/download"
+                          Click="ItemImportRules_Click" />
+        <TextBlock x:Name="LabStatus" Margin="13,12,8,0" Opacity="0.45" FontSize="11" TextWrapping="Wrap"
+                   Text="{DynamicResource GameOptions.Left.Hint}" />
+    </StackPanel>
+</local:MyPageLeft>

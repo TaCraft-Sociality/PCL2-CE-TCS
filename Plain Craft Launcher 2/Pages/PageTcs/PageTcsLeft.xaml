@@ -1,0 +1,28 @@
+<local:MyPageLeft x:Class="PCL.PageTcsLeft"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:local="clr-namespace:PCL"
+                  AnimatedControl="{Binding ElementName=PanItem, Mode=OneWay}">
+    <StackPanel x:Name="PanItem" Orientation="Vertical" Width="140" Margin="0,12,0,0">
+        <TextBlock x:Name="LabCategory" Margin="13,5,5,3" Opacity="0.6" FontSize="12" />
+        <local:MyListItem x:Name="ItemHome" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Tag="home" Height="36" VerticalAlignment="Top" Title="站点首页"
+                          LogoScale="0.9" SvgIcon="lucide/globe" Click="Item_Click" />
+        <local:MyListItem x:Name="ItemRefresh" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Tag="refresh" Height="36" VerticalAlignment="Top" Title="刷新页面"
+                          LogoScale="0.9" SvgIcon="lucide/refresh-cw" Click="Item_Click" />
+        <local:MyListItem x:Name="ItemBack" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Tag="back" Height="36" VerticalAlignment="Top" Title="后退"
+                          LogoScale="0.9" SvgIcon="lucide/arrow-left" Click="Item_Click" />
+        <local:MyListItem x:Name="ItemForward" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Tag="forward" Height="36" VerticalAlignment="Top" Title="前进"
+                          LogoScale="0.9" SvgIcon="lucide/arrow-right" Click="Item_Click" />
+        <local:MyListItem x:Name="ItemExternal" IsScaleAnimationEnabled="False" Type="Clickable"
+                          Tag="external" Height="36" VerticalAlignment="Top"
+                          Title="在系统浏览器打开" LogoScale="0.85" SvgIcon="lucide/external-link"
+                          Click="Item_Click" />
+        <TextBlock x:Name="LabTip" Margin="13,8,8,0" Opacity="0.45" FontSize="11"
+                   TextWrapping="Wrap"
+                   Text="社区与皮肤站均使用启动器内置浏览器打开，无需跳转到系统浏览器。" />
+    </StackPanel>
+</local:MyPageLeft>

@@ -1,0 +1,16 @@
+﻿<local:MyPageLeft
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:PCL"
+    x:Class="PCL.PageMultiplayerLeft">
+    <StackPanel x:Name="PanItem" Orientation="Vertical" Width="150" Margin="0,12,0,0">
+        <TextBlock x:Name="LabCategory" Text="多人游戏" Margin="13,5,5,3" Opacity="0.6" FontSize="12" />
+        <local:MyListItem x:Name="ItemServers" IsScaleAnimationEnabled="False" Type="Clickable" Tag="servers"
+                          Height="36" VerticalAlignment="Top" Title="服务器" LogoScale="0.9"
+                          SvgIcon="lucide/server" Click="Item_Click" />
+        <local:MyListItem x:Name="ItemRooms" IsScaleAnimationEnabled="False" Type="Clickable" Tag="rooms"
+                          Height="36" VerticalAlignment="Top" Title="联机房间" LogoScale="0.9"
+                          SvgIcon="lucide/network" Click="Item_Click" />
+        
+    </StackPanel>
+</local:MyPageLeft>
