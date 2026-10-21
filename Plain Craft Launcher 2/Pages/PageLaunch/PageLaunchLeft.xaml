@@ -153,14 +153,5 @@
         <local:MyButton Grid.Row="4" x:Name="BtnCancel" Height="35" Margin="20,0,20,20" VerticalAlignment="Bottom"
                         Click="BtnCancel_Click"
                         Text="{DynamicResource Common.Action.Cancel}" />
-        <Border Grid.Row="3" Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Left" Panel.ZIndex="999" Margin="20,10,0,0"
-                CornerRadius="11" Padding="12,4" Background="#1976D2">
-            <StackPanel Orientation="Horizontal">
-                <Ellipse Width="7" Height="7" Fill="#2FA84A" VerticalAlignment="Center" Margin="0,0,6,0" />
-                <TextBlock x:Name="LabOnline" Text="在线玩家 …" FontSize="11.5"
-                           Foreground="White"
-                           ToolTip="TCS服务器在线玩家数量" />
-            </StackPanel>
-        </Border>
     </Grid>
 </local:MyPageLeft>

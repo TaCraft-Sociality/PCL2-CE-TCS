@@ -46,77 +46,9 @@ public partial class PageLaunchLeft
     private bool isWidthAnimating;
     private double showProgress;
 
-
-    // TCS：左栏气泡显示 TCS 服务器在线玩家数（60 秒自动刷新）
-    private async System.Threading.Tasks.Task RefreshOnlineAsync()
-    {
-        try
-        {
-            var url = "https://www.tcscraft.com/assets/nocompile/kighzusjuzh.json?t=" + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            using var http = new System.Net.Http.HttpClient { Timeout = TimeSpan.FromSeconds(10) };
-            http.DefaultRequestHeaders.Add("User-Agent", "PCL-TCS");
-            var text = await http.GetStringAsync(url).ConfigureAwait(true);
-            if (System.Text.Json.Nodes.JsonNode.Parse(text) is System.Text.Json.Nodes.JsonObject root)
-            {
-                var online = root["online_players"]?.ToString() ?? "?";
-                var max = root["max_players"]?.ToString() ?? "?";
-                if (LabOnlineBubble != null) LabOnlineBubble.Text = "● 在线玩家 " + online + " / " + max;
-            }
-        }
-        catch
-        {
-            if (LabOnlineBubble != null) LabOnlineBubble.Text = "● 在线玩家 未知";
-        }
-    }
-
-    // TCS：运行时注入在线玩家气泡（XAML 侧渲染不出，改由代码添加到 PanInput）
-    private void TcsInjectOnlineBubble()
-    {
-        try
-        {
-            if (PanInput == null) return;
-            var border = new System.Windows.Controls.Border
-            {
-                Width = 118,
-                Height = 24,
-                CornerRadius = new System.Windows.CornerRadius(12),
-                Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0x19, 0x76, 0xD2)),
-                VerticalAlignment = System.Windows.VerticalAlignment.Center,
-                HorizontalAlignment = System.Windows.HorizontalAlignment.Left,
-                Margin = new System.Windows.Thickness(20, 10, 0, 0),
-                ToolTip = "TCS服务器在线玩家数量"
-            };
-            var tb = new System.Windows.Controls.TextBlock
-            {
-                Text = "● 在线玩家 …",
-                Foreground = System.Windows.Media.Brushes.White,
-                FontSize = 11,
-                HorizontalAlignment = System.Windows.HorizontalAlignment.Center,
-                VerticalAlignment = System.Windows.VerticalAlignment.Center
-            };
-            border.Child = tb;
-            System.Windows.Controls.Panel.SetZIndex(border, 9999);
-            System.Windows.Controls.Grid.SetRow(border, 3);
-            System.Windows.Controls.Grid.SetColumn(border, 0);
-            System.Windows.Controls.Grid.SetColumnSpan(border, 4);
-            PanInput.Children.Add(border);
-            LabOnlineBubble = tb;
-        }
-        catch { }
-    }
-
-    private System.Windows.Controls.TextBlock LabOnlineBubble;
     public PageLaunchLeft()
     {
         InitializeComponent();
-            Loaded += async (_, _) =>
-            {
-                await RefreshOnlineAsync();
-                var tm = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(60) };
-                tm.Tick += async (_, _) => await RefreshOnlineAsync();
-                tm.Start();
-                Unloaded += (_, _) => tm.Stop();
-            };
         Loaded += PageLaunchLeft_Loaded;
         WeakLanguageChanged.Add(this, OnLanguageChanged);
         // Handles
