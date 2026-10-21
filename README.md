@@ -4,7 +4,7 @@
 
 # PCL TCS
 
-**版本 1.1.0 Beta**（基于 PCL CE 2.15.1 二次开发）
+**版本 1.1.3 Beta**（基于 PCL CE 2.15.1 二次开发）
 
 [上游存储库](https://github.com/Meloong-Git/PCL)
 
